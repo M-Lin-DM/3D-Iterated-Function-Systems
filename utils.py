@@ -20,11 +20,25 @@ def dict_to_obj_list(obj_dict):
 
 
 def points_on_sphere(n):
+    # points spread over the unit sphere. Note these are not uniformly distributed. The corners have slightly higher density due to sampling from the unit cube..
     return normalize_vectors(np.random.rand(n, 3) - 0.5)
 
 
 def point_on_sphere_array(n):
     return np.repeat(points_on_sphere(1), n, axis=0)  # array of repeated single vector lying on surface of unit sphere
+
+
+def points_on_sphere_cropped(n, v, theta):
+    # n points spread over the unit sphere. we remove points pointed away from v beyond an angle theta
+    points = points_on_sphere(n * 10)
+    v_arr = normalize_vectors(np.repeat(v, n * 10, axis=0))
+    dot_product = np.sum(points * v_arr, 1)
+
+    angle = np.arccos(dot_product)
+    points = points[angle < theta, :]  # remove points with angle greater than theta
+    points = points[:n, :]  # take only n points
+
+    return points
 
 
 def constant_array(arr, n):
@@ -36,3 +50,7 @@ def get_random_base_color():
     base_color += 0.05
     base_color = np.clip(base_color, 0.1, 0.9)
     return base_color
+
+
+def new_child_id():
+    return float(np.random.rand(1))
