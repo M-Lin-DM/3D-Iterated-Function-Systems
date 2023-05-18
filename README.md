@@ -9,7 +9,7 @@ Adding stochasticity to the functions that create mutations allows us to get som
 
 # Scripts
 - `plot_objects.py` is the top-level script that is intended to be run inside Cinema4D's scripts section. Here you can change the parameters used to generate the objects.
-- - You will need to place all .py files in the directory that C4D searches, and not within its own folder in that directory. For me it's the libs folder: C:\Users\MrLin\AppData\Roaming\Maxon\python\python39\libs. 
-- - `generate_tree.py` contains the main logic that creates a list of objects to be plotted and the networkx graph that contains linkages between nodes.
-- - the key function that is called in `plot_objects.py` is `generate_objects()`
-- 
+- You will need to place all .py files in the directory that C4D searches, and not within its own folder in that directory. For me it's the libs folder: C:\Users\MrLin\AppData\Roaming\Maxon\python\python39\libs. 
+- `generate_tree.py` contains the main logic that creates a list of objects to be plotted and the networkx graph that contains linkages between nodes.
+- the key function that is called in `plot_objects.py` is `generate_objects()`
+
